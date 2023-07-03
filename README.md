@@ -1,18 +1,18 @@
 # Ubuntu Task Manager
 
 ## Process Manager
-  - A. List all the processes in the system.
-  - B. List all the processes grouped by user.
-  - C. Display the process ID of all the processes.
-  - D. Run/stop a specific process.
-  - E. Send specific signals to a process.
+  - List all the processes in the system.
+  - List all the processes grouped by user.
+  - Display the process ID of all the processes.
+  - Run/stop a specific process.
+  - Send specific signals to a process.
 
 ## Package Manager
-  -A. List all the installed packages in the system.
-  -B. List all upgradeable packages in the system.
-  -C. Install a specific package (e.g., Unrar).
-  -D. Uninstall a package by name (e.g., Unrar).
-  -E. Check if a specific package is installed.
+  - List all the installed packages in the system.
+  - List all upgradeable packages in the system.
+  - Install a specific package (e.g., Unrar).
+  - Uninstall a package by name (e.g., Unrar).
+  - Check if a specific package is installed.
 
 ## Application Outlines 
   - `Menu Interface`:
