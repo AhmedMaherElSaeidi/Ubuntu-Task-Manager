@@ -22,4 +22,4 @@
     - Supports a manual page for the project.
 
 ## Application Overview
-[Ubuntu task manager](assets/images/task-manager-overview.jpg)
+![Ubuntu task manager](assets/images/task-manager-overview.jpg)
