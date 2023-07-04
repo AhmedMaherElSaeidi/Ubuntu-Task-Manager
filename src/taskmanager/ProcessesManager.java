@@ -65,8 +65,7 @@ public class ProcessesManager extends javax.swing.JFrame {
         setTitle("Process Manager");
         setBackground(new java.awt.Color(0, 0, 0));
         setLocation(new java.awt.Point(250, 100));
-        setPreferredSize(new java.awt.Dimension(1500, 800));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1200, 600));
         setSize(new java.awt.Dimension(1200, 0));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -76,7 +75,7 @@ public class ProcessesManager extends javax.swing.JFrame {
 
         jTable.setBackground(new java.awt.Color(0, 0, 0));
         jTable.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jTable.setForeground(new java.awt.Color(0, 51, 255));
+        jTable.setForeground(new java.awt.Color(51, 255, 51));
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -138,12 +137,12 @@ public class ProcessesManager extends javax.swing.JFrame {
                 .addComponent(MEM_usage, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(memBar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel_ProcessScreen, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel_TaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_endtask, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel_ProcessScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel_TaskName, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton_endtask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jScrollPane1)
         );
@@ -189,15 +188,11 @@ public class ProcessesManager extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         timer.stop();
         jButton_endtask.setEnabled(false);
-
-        TaskManagerGUI pmGUI = new TaskManagerGUI();
-        pmGUI.show();
-
     }//GEN-LAST:event_formWindowClosed
 
     private void jButton_endtaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_endtaskActionPerformed
         try {
-            Runtime.getRuntime().exec("sudo kill -9 " + this.pid);
+            TaskManager.bash(TaskManagerGUI.rootCommand + "kill -9 " + this.pid);
             jButton_endtask.setEnabled(false);
             jLabel_TaskName.setText("");
         } catch (IOException ex) {

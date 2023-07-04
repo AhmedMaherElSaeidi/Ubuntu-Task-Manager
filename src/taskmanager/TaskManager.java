@@ -12,7 +12,24 @@ import java.io.*;
  */
 public class TaskManager {
 
+    public static void bash(String command) throws IOException {
+        Runtime.getRuntime().exec(new String[]{"bash", "-c", command});
+    }
+
     public static String bashTerminal(String command) throws IOException {
+        String line;
+        Process process = Runtime.getRuntime().exec(new String[]{"bash", "-c", command});
+        BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        StringBuilder data = new StringBuilder();
+
+        while ((line = buf.readLine()) != null) {
+            data.append(line).append(System.lineSeparator());
+        }
+
+        return data.toString().replaceAll("(\\r\\n|[\\n\\x0B\\x0C\\r\\u0085\\u2028\\u2029])$", "");
+    }
+
+    public static String javaTerminal(String command) throws IOException {
         String line;
         Process process = Runtime.getRuntime().exec(command);
         BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -43,7 +60,7 @@ public class TaskManager {
     }
 
     public static boolean packageExists(String packageName) throws IOException {
-        String[] lines = TaskManager.strFormatter(TaskManager.bashTerminal("sudo dpkg-query -l"));
+        String[] lines = TaskManager.strFormatter(TaskManager.bashTerminal("dpkg-query -l"));
 
         for (int i = 5; i < lines.length; i++) {
             if (lines[i].split(" ")[1].equals(packageName)) {

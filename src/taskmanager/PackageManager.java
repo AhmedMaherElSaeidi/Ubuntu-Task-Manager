@@ -18,7 +18,7 @@ public class PackageManager extends javax.swing.JFrame {
     private String packageName;
 
     public PackageManager() {
-        this("sudo dpkg-query -l");
+        this("dpkg-query -l");
     }
 
     public PackageManager(String cmd) {
@@ -32,7 +32,7 @@ public class PackageManager extends javax.swing.JFrame {
 
     private void getTableIntialized(String command) throws IOException {
         String[] lines = TaskManager.strFormatter(TaskManager.bashTerminal(command));
-
+        
         String[] tableHeaders = TaskManager.splice(lines[3].split(" "), 0);
         int length = tableHeaders.length;
 
@@ -73,8 +73,8 @@ public class PackageManager extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jLabel_Pckg = new javax.swing.JLabel();
-        jButton_Pckg = new javax.swing.JButton();
         jLabel_PckgCount = new javax.swing.JLabel();
+        jButton_Uninstall = new javax.swing.JButton();
 
         jButton_UninstallPckg.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
         jButton_UninstallPckg.setText("uninstall");
@@ -83,7 +83,7 @@ public class PackageManager extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Package Manager");
         setLocation(new java.awt.Point(300, 100));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1200, 600));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -92,7 +92,7 @@ public class PackageManager extends javax.swing.JFrame {
 
         jTable.setBackground(new java.awt.Color(0, 0, 0));
         jTable.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jTable.setForeground(new java.awt.Color(0, 51, 255));
+        jTable.setForeground(new java.awt.Color(51, 255, 51));
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -111,19 +111,19 @@ public class PackageManager extends javax.swing.JFrame {
         jLabel_Pckg.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
         jLabel_Pckg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jButton_Pckg.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        jButton_Pckg.setForeground(new java.awt.Color(204, 0, 0));
-        jButton_Pckg.setText("Uninstall");
-        jButton_Pckg.setEnabled(false);
-        jButton_Pckg.addActionListener(new java.awt.event.ActionListener() {
+        jLabel_PckgCount.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        jLabel_PckgCount.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel_PckgCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jButton_Uninstall.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        jButton_Uninstall.setForeground(new java.awt.Color(204, 0, 0));
+        jButton_Uninstall.setText("uninstall");
+        jButton_Uninstall.setEnabled(false);
+        jButton_Uninstall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_PckgActionPerformed(evt);
+                jButton_UninstallActionPerformed(evt);
             }
         });
-
-        jLabel_PckgCount.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        jLabel_PckgCount.setForeground(new java.awt.Color(0, 51, 255));
-        jLabel_PckgCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,11 +132,11 @@ public class PackageManager extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel_PckgCount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel_PckgCount, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel_Pckg, javax.swing.GroupLayout.PREFERRED_SIZE, 1061, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton_Pckg, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel_Pckg, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton_Uninstall, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -146,8 +146,8 @@ public class PackageManager extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel_Pckg, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jButton_Pckg, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jLabel_PckgCount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel_PckgCount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton_Uninstall, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -166,7 +166,7 @@ public class PackageManager extends javax.swing.JFrame {
                 String description = model.getValueAt(row_index, 3).toString();
 
                 jLabel_Pckg.setText("Package [ " + this.packageName + " ] : Version [ " + version + " ] : Arch [ " + architecture + " ] : Desc [ " + description + " ]");
-                jButton_UninstallPckg.setEnabled(true);
+                jButton_Uninstall.setEnabled(true);
             }
         } catch (NumberFormatException ex) {
             System.out.println(ex);
@@ -174,19 +174,17 @@ public class PackageManager extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableMouseClicked
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        TaskManagerGUI task_manager = new TaskManagerGUI();
-        task_manager.show();
         this.dispose();
     }//GEN-LAST:event_formWindowClosed
 
-    private void jButton_PckgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PckgActionPerformed
-        TerminalWindow terminal = new TerminalWindow("sudo apt-get remove " + this.packageName + " --yes");
+    private void jButton_UninstallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UninstallActionPerformed
+        TerminalWindow terminal = new TerminalWindow(TaskManagerGUI.rootCommand + "apt-get remove " + this.packageName + " --yes");
         JOptionPane.showMessageDialog(null, "Hold on, it takes time.\nDon't go away", "Message", JOptionPane.INFORMATION_MESSAGE);
         terminal.show();
 
         jLabel_Pckg.setText("");
-        jButton_UninstallPckg.setEnabled(false);
-    }//GEN-LAST:event_jButton_PckgActionPerformed
+        jButton_Uninstall.setEnabled(false);
+    }//GEN-LAST:event_jButton_UninstallActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,7 +222,7 @@ public class PackageManager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_Pckg;
+    private javax.swing.JButton jButton_Uninstall;
     private javax.swing.JButton jButton_UninstallPckg;
     private javax.swing.JLabel jLabel_Pckg;
     private javax.swing.JLabel jLabel_PckgCount;

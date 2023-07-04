@@ -20,7 +20,7 @@ public class PackageUpdateManager extends javax.swing.JFrame {
     private String packageName;
 
     public PackageUpdateManager() {
-        this("sudo apt list --upgradable");
+        this(TaskManagerGUI.rootCommand + "apt list --upgradable");
     }
 
     public PackageUpdateManager(String cmd) {
@@ -81,7 +81,7 @@ public class PackageUpdateManager extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Package Update Manager");
         setLocation(new java.awt.Point(250, 100));
-        setPreferredSize(new java.awt.Dimension(1300, 800));
+        setPreferredSize(new java.awt.Dimension(1200, 600));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -90,7 +90,7 @@ public class PackageUpdateManager extends javax.swing.JFrame {
 
         jTable.setBackground(new java.awt.Color(0, 0, 0));
         jTable.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jTable.setForeground(new java.awt.Color(0, 51, 255));
+        jTable.setForeground(new java.awt.Color(51, 255, 51));
         jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -106,7 +106,7 @@ public class PackageUpdateManager extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable);
 
-        jButton_UpdatePckg.setForeground(new java.awt.Color(0, 51, 255));
+        jButton_UpdatePckg.setForeground(new java.awt.Color(0, 102, 0));
         jButton_UpdatePckg.setText("Update");
         jButton_UpdatePckg.setEnabled(false);
         jButton_UpdatePckg.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class PackageUpdateManager extends javax.swing.JFrame {
         jLabel_Pckg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel_PckgCount.setFont(new java.awt.Font("Liberation Sans", 1, 16)); // NOI18N
-        jLabel_PckgCount.setForeground(new java.awt.Color(0, 51, 255));
+        jLabel_PckgCount.setForeground(new java.awt.Color(0, 102, 0));
         jLabel_PckgCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,7 +170,7 @@ public class PackageUpdateManager extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableMouseClicked
 
     private void jButton_UpdatePckgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_UpdatePckgActionPerformed
-        TerminalWindow terminal = new TerminalWindow("sudo apt-get install " + this.packageName + " --yes");
+        TerminalWindow terminal = new TerminalWindow(TaskManagerGUI.rootCommand + "apt-get install " + this.packageName + " --yes");
         JOptionPane.showMessageDialog(null, "Hold on, it takes time.\nDon't go away", "Message", JOptionPane.INFORMATION_MESSAGE);
         terminal.show();
 
@@ -179,8 +179,6 @@ public class PackageUpdateManager extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_UpdatePckgActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        TaskManagerGUI task_manager = new TaskManagerGUI();
-        task_manager.show();
         this.dispose();
     }//GEN-LAST:event_formWindowClosed
 

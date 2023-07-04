@@ -69,7 +69,7 @@ public class TerminalWindow extends javax.swing.JFrame {
         JTA_Terminal.setEditable(false);
         JTA_Terminal.setBackground(new java.awt.Color(0, 0, 0));
         JTA_Terminal.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
-        JTA_Terminal.setForeground(new java.awt.Color(0, 51, 255));
+        JTA_Terminal.setForeground(new java.awt.Color(51, 255, 51));
         JTA_Terminal.setRows(30);
         JTA_Terminal.setTabSize(10);
         JTA_Terminal.setToolTipText("");
