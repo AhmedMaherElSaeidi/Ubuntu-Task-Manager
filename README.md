@@ -20,7 +20,8 @@
     - The menu reappears until the user exits the application.
   - `Manual Page`:
     - Supports a manual page for the project.
+  - `Jar`:
+    - It supports linux OS, and you need a `jdk 11.0.19` or above to run it. [Download jar.](https://raw.githubusercontent.com/AhmedMaherElSaeidi/Ubuntu-Task-Manager/main/dist/TaskManager.rar?token=GHSAT0AAAAAACD6ZU7OSBJWECGPJBIASD3WZFDNKBA)
 
 ## Application Overview
-It supports linux OS, and you need a `jdk 11.0.19` or above to run it. [Download jar.](https://raw.githubusercontent.com/AhmedMaherElSaeidi/Ubuntu-Task-Manager/main/dist/TaskManager.rar?token=GHSAT0AAAAAACD6ZU7OSBJWECGPJBIASD3WZFDNKBA)
 ![Ubuntu task manager](assets/images/task-manager-overview.jpg)
