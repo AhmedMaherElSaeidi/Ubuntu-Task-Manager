@@ -15,13 +15,15 @@
   - Check if a specific package is installed.
 
 ## Application Outlines 
-  - `Menu Interface`:
+  - `Menu Interface` :
     - The application provides a menu interface allowing the user to select desired options.
     - The menu reappears until the user exits the application.
-  - `Manual Page`:
+  - `Manual Page` :
     - Supports a manual page for the project.
-  - `Jar`:
-    - It supports linux OS, and you need a `jdk 11.0.19` or above to run it. [Download jar.](https://raw.githubusercontent.com/AhmedMaherElSaeidi/Ubuntu-Task-Manager/main/dist/TaskManager.rar?token=GHSAT0AAAAAACD6ZU7OSBJWECGPJBIASD3WZFDNKBA)
+  - `Jar` :
+    - It supports linux OS, and you need a `jdk 11.0.19` or above to run it.
+    - The app will ask you at start for the user password in order to have root privilidges to deliver the intended functionality.
+    - [Download jar.](https://raw.githubusercontent.com/AhmedMaherElSaeidi/Ubuntu-Task-Manager/main/dist/TaskManager.rar?token=GHSAT0AAAAAACD6ZU7OSBJWECGPJBIASD3WZFDNKBA)
 
 ## Application Overview
 ![Ubuntu task manager](assets/images/task-manager-overview.jpg)
